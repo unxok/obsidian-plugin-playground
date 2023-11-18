@@ -4,7 +4,6 @@ import { Notice } from "obsidian";
 import { addCommands } from "./addCommands";
 
 export const pluginExecute = async (plugin: TemplateCommands) => {
-	console.log("settings", plugin.settings);
 	// get the template files from the folder specified in settings
 	const templateFiles = getFilesFromTemplateFolder(plugin);
 	// if there are no template files, show a notice

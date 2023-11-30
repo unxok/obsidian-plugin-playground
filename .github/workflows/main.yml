@@ -1,0 +1,28 @@
+name: Compile TypeScript
+
+on: workflow_dispatch
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js 16
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Compile/Bundle TypeScript
+        run: npm run build
+
+      - name: Commit and push
+        run: | 
+          git config --global user.name "Compiler Bot"
+          git config --global user.email "username@users.noreply.github.com"
+          git add . && git commit -m "compiled ts" && git push origin main
